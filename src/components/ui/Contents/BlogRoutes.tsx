@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import BlogTest from './BlogTest/BTest';
-import BlogList from './BlogList';
+import BlogSearch from './BlogSearch';
 import BlogInitial from './BlogInitial/BInitial';
 import Blogs from './Blogs';
 
@@ -12,7 +12,7 @@ function BlogRoutes() {
       <Route index element={<Blogs />} />
 
       {/* /blog/list へのアクセス時 */}
-      <Route path="tag" element={<BlogList />} />
+      <Route path="tag" element={<BlogSearch />} />
       
       {/* /blog/test へのアクセス時 */}
       <Route path="test" element={<BlogTest />} />

@@ -11,7 +11,7 @@ const BTestCard = () => {
 
   return (
     <>
-      <Card.Root width={{ base: "100%", md: "100%", lg: "100%" }} onClick={goToBlog} cursor="pointer">
+      <Card.Root width="100%" onClick={goToBlog} cursor="pointer">
           <Card.Header>
             <Heading size="md">Test post</Heading>
           </Card.Header>

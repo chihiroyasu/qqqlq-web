@@ -2,7 +2,7 @@ import { Container, VStack } from '@chakra-ui/react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/ui/layout/NavBar';
 import Blogs from './components/ui/Contents/Blogs';
-import BlogRoutes from './components/ui/Contents/Blogoutes';
+import BlogRoutes from './components/ui/Contents/BlogRoutes';
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
     <Router>
       <NavBar />
       <Container maxW="100%" mx="auto" p={4}>
-        <VStack width="90%" mx="auto" align="stretch">
+        <VStack width={{ base: "90%", md: "90%", lg: "90%" }} mx="auto" align="stretch">
           <Routes>
             <Route path="/" element={<Blogs />} />
             <Route path="/blog/*" element={<BlogRoutes />} />
