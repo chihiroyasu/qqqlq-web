@@ -1,17 +1,28 @@
 import { Container, VStack } from '@chakra-ui/react'
-import NavBar from './components/ui/NavBar';
-import CardDemo from './components/ui/Card';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NavBar from './components/ui/layout/NavBar';
+import Blogs from './components/ui/Contents/Blogs';
+import BlogRoutes from './components/ui/Contents/Blogoutes';
 
 function App() {
+
+  function NotFound() {
+    return <div>Page Not Found</div>;
+  };
+
   return (
-    <>
+    <Router>
       <NavBar />
       <Container maxW="100%" mx="auto" p={4}>
-        <VStack width="80%" mx="auto" align="stretch">
-          <CardDemo />
+        <VStack width="90%" mx="auto" align="stretch">
+          <Routes>
+            <Route path="/" element={<Blogs />} />
+            <Route path="/blog/*" element={<BlogRoutes />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </VStack>
       </Container>
-    </>
+    </Router>
   )
 }
 
