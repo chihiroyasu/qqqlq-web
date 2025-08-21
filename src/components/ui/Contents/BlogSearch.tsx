@@ -1,15 +1,29 @@
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { 
     Stack,
     Tag,
+    VStack,
+    Separator,
+    Box,
     HStack,
-    // Text,
+    Text,
 } from "@chakra-ui/react";
 import { HiPlus } from "react-icons/hi"
+import BlogTest from "./BlogTest/BTestCard";
+import BlogInitial from "./BlogInitial/BInitialCard";
+import { RiArrowDropRightLine } from "react-icons/ri"
 
 
 const BlogSearch = () => {
+    const navigate = useNavigate();
+    const goToTop = () => {
+        navigate("/");
+    }
+    const goToTags = () => {
+        navigate("/blog/tag");
+    };
+
     // タグごとの状態を管理する
     const [selectedTags, setSelectedTags] = useState<Record<string, boolean>>({});
     // タグの選択状態をトグルする関数
@@ -21,8 +35,8 @@ const BlogSearch = () => {
     };
     // ここでタグのデータを定義
     const BTags = [
-        {id: 1, title: "test", tags: ["Chakra", "React",]},
-        {id: 2, title: "initial", tags: ["learning",]},
+        {id: 0, component: BlogTest, tags: ["Chakra", "React",]},
+        {id: 1, component: BlogInitial, tags: ["learning",]},
     ];
     // タグの色を定義
     const TagColor = {
@@ -32,30 +46,40 @@ const BlogSearch = () => {
     };
     // 全てのタグをマージした配列
     const AllTags = Array.from(new Set(BTags.flatMap(item => item.tags)));
-    // 対象タグを含むtitleのリスト
-    const getTitle = (tag: string) => {
-        return BTags
-            .filter(item => item.tags.includes(tag)) // tagを含むアイテムをフィルタリング
-            .map(item => item.title) // タイトルを抽出
-            .join(", "); // タイトルをカンマ区切りで結合
-    };
-    // 選択されているタグのタイトルをリスト取得
-    const getSearchedTitles = () => {
+    // 選択されているタグに対応するコンポーネントのリスト取得
+    const getSearchedComponents = () => {
         return Object.keys(selectedTags)
-            .filter(tag => selectedTags[tag]) // 選択されているタグのみをフィルタリング
-            .map(tag => getTitle(tag)) // タイトルを取得
-    };
-    // 重複を排除したタイトルのリスト
-    const SearchedTitles = Array.from(new Set(getSearchedTitles()));
-
-
-    const navigate = useNavigate();
-    const goToBlog = (params: string) => {
-        navigate(`/blog/${params}`);
-    };
+            .filter(tag => selectedTags[tag])
+            .flatMap(tag => 
+                BTags.filter(item => item.tags.includes(tag))
+                    .map(item => ({id: item.id, Component: item.component}))
+            );
+    }
+    // const SearchedComponents = Array.from(new Set(getSearchedComponents()));
+    const SearchedComponents = Object.values(
+        getSearchedComponents().reduce((acc, item) => {
+            acc[item.id] = item; // 同じidなら上書きされる
+            return acc;
+        }, {} as Record<number, {id:number; Component:any}>)
+    );
+    const SortedComponents = SearchedComponents.sort((a, b) => b.id - a.id);
 
     return (
         <>
+            <Separator orientation="vertical" />
+                <Box borderBottom="2px solid" display="inline-block">
+                    <HStack gap={2}>
+                        <Box onClick={goToTop} cursor="pointer">
+                            <Text textStyle="3xl">Top</Text>
+                        </Box>
+                        <RiArrowDropRightLine size="2em" />
+                        <Box onClick={goToTags} cursor="pointer">
+                            <Text textStyle="3xl">Tech Blog</Text>
+                        </Box>
+                    </HStack>
+                </Box>
+            <Separator orientation="vertical" />
+            
             <Stack direction="row" gap={4} wrap="wrap">
                 {AllTags.map(tag => (
                     <div key={tag} onClick={() => toggleTag(tag)}>
@@ -77,9 +101,13 @@ const BlogSearch = () => {
                 ))}
             </Stack>
 
-            <HStack>
+            <Separator orientation="vertical" />
 
-            </HStack>
+            <VStack>
+                {SortedComponents.map((item) => (
+                    <item.Component key={item.id} />
+                ))}
+            </VStack>
         </>
     )
 }
