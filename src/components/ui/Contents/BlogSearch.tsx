@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { 
+import {
     Stack,
     Tag,
     VStack,
@@ -14,7 +14,6 @@ import BlogTest from "./BlogTest/BTestCard";
 import BlogInitial from "./BlogInitial/BInitialCard";
 import { RiArrowDropRightLine } from "react-icons/ri"
 
-
 const BlogSearch = () => {
     const navigate = useNavigate();
     const goToTop = () => {
@@ -26,26 +25,45 @@ const BlogSearch = () => {
 
     // タグごとの状態を管理する
     const [selectedTags, setSelectedTags] = useState<Record<string, boolean>>({});
+    
+    // タグが一度でも選択されたかどうかを管理
+    const [hasTagBeenSelected, setHasTagBeenSelected] = useState(false);
+
     // タグの選択状態をトグルする関数
     const toggleTag = (tag: string) => {
         setSelectedTags(prev => ({
-        ...prev,
-        [tag]: !prev[tag]
+            ...prev,
+            [tag]: !prev[tag]
         }));
+        // 初回のタグ選択を記録
+        if (!hasTagBeenSelected) {
+            setHasTagBeenSelected(true);
+        }
     };
+
     // ここでタグのデータを定義
     const BTags = [
-        {id: 0, component: BlogTest, tags: ["Chakra", "React",]},
+        {id: 0, component: BlogTest, tags: ["Chakra", "React", "learning"]},
         {id: 1, component: BlogInitial, tags: ["learning",]},
     ];
+
     // タグの色を定義
-    const TagColor = {
+    const TagColor: { [key: string]: string } = {
         learning: "purple",
         Chakra: "teal",
         React: "orange",
     };
+
     // 全てのタグをマージした配列
     const AllTags = Array.from(new Set(BTags.flatMap(item => item.tags)));
+
+    // 全てのコンポーネントを取得する関数
+    const getAllComponents = () => {
+        return BTags
+            .map(item => ({id: item.id, Component: item.component}))
+            .sort((a, b) => b.id - a.id);
+    };
+
     // 選択されているタグに対応するコンポーネントのリスト取得
     const getSearchedComponents = () => {
         return Object.keys(selectedTags)
@@ -55,14 +73,25 @@ const BlogSearch = () => {
                     .map(item => ({id: item.id, Component: item.component}))
             );
     }
-    // const SearchedComponents = Array.from(new Set(getSearchedComponents()));
-    const SearchedComponents = Object.values(
-        getSearchedComponents().reduce((acc, item) => {
-            acc[item.id] = item; // 同じidなら上書きされる
-            return acc;
-        }, {} as Record<number, {id:number; Component:any}>)
-    );
-    const SortedComponents = SearchedComponents.sort((a, b) => b.id - a.id);
+
+    // 表示するコンポーネントを決定
+    const getDisplayComponents = () => {
+        // タグが選択されたことがない場合は全てのコンポーネントを表示
+        if (!hasTagBeenSelected) {
+            return getAllComponents();
+        }
+
+        // タグが選択されている場合はフィルタリング結果を表示
+        const SearchedComponents = Object.values(
+            getSearchedComponents().reduce((acc, item) => {
+                acc[item.id] = item; // 同じidなら上書きされる
+                return acc;
+            }, {} as Record<number, {id:number; Component:any}>)
+        );
+        return SearchedComponents.sort((a, b) => b.id - a.id);
+    };
+
+    const DisplayComponents = getDisplayComponents();
 
     return (
         <>
@@ -79,12 +108,12 @@ const BlogSearch = () => {
                     </HStack>
                 </Box>
             <Separator orientation="vertical" />
-            
+                     
             <Stack direction="row" gap={4} wrap="wrap">
                 {AllTags.map(tag => (
                     <div key={tag} onClick={() => toggleTag(tag)}>
                         {selectedTags[tag] ? (
-                            <Tag.Root variant="solid" cursor="pointer">
+                            <Tag.Root variant="solid" cursor="pointer" colorPalette={TagColor[tag] || "gray"}>
                                 <Tag.Label>{tag}</Tag.Label>
                                 <Tag.CloseTrigger onClick={(e) => {
                                     e.stopPropagation();
@@ -92,7 +121,7 @@ const BlogSearch = () => {
                                 }} />
                             </Tag.Root>
                         ) : (
-                            <Tag.Root cursor="pointer">
+                            <Tag.Root cursor="pointer" colorPalette={TagColor[tag] || "gray"}>
                                 <Tag.StartElement as={HiPlus} />
                                 <Tag.Label>{tag}</Tag.Label>
                             </Tag.Root>
@@ -104,7 +133,7 @@ const BlogSearch = () => {
             <Separator orientation="vertical" />
 
             <VStack>
-                {SortedComponents.map((item) => (
+                {DisplayComponents.map((item) => (
                     <item.Component key={item.id} />
                 ))}
             </VStack>
