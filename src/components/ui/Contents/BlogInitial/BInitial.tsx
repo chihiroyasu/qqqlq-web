@@ -10,7 +10,6 @@ const BlogInitial = () => {
         <Text textStyle={"xl"} fontWeight={"bold"}>Hello World.</Text>
         <Text>I'm qqqlq.</Text>
         <Text>This blog was created using React.</Text>
-        <Text>Details and configuration are on GitHub.</Text>
         <Text>Details and configuration are on{" "}
           <Link
             variant={"underline"}
