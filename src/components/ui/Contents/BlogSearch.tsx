@@ -96,17 +96,23 @@ const BlogSearch = () => {
     return (
         <>
             <Separator orientation="vertical" />
-                <Box borderBottom="2px solid" display="inline-block">
-                    <HStack gap={2}>
-                        <Box onClick={goToTop} cursor="pointer">
-                            <Text textStyle="3xl">Top</Text>
-                        </Box>
-                        <RiArrowDropRightLine size="2em" />
-                        <Box onClick={goToTags} cursor="pointer">
-                            <Text textStyle="3xl">Tech Blog</Text>
-                        </Box>
-                    </HStack>
-                </Box>
+            <Box borderBottom="2px solid" display="inline-block">
+                <HStack gap={2}>
+                    <Box onClick={goToTop} cursor="pointer">
+                        <Text
+                            fontSize={{ base: "lg", md: "lg", lg: "3xl" }}
+                            whiteSpace="nowrap"
+                        >Top</Text>
+                    </Box>
+                    <RiArrowDropRightLine size="2em" />
+                    <Box onClick={goToTags} cursor="pointer">
+                        <Text
+                            fontSize={{ base: "lg", md: "lg", lg: "3xl" }}
+                            whiteSpace="nowrap"
+                        >Tech Blog</Text>
+                    </Box>
+                </HStack>
+            </Box>
             <Separator orientation="vertical" />
                      
             <Stack direction="row" gap={4} wrap="wrap">

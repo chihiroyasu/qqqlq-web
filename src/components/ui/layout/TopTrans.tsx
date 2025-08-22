@@ -30,7 +30,10 @@ const Trans = () => {
         <Separator orientation="vertical" />
             <Box onClick={goToTags} cursor="pointer" borderBottom="2px solid" display="inline-block">
                 <HStack gap={2}>
-                    <Text textStyle="3xl">Tech Blog</Text>
+                    <Text
+                        fontSize={{ base: "lg", md: "lg", lg: "3xl" }}
+                        whiteSpace="nowrap"
+                    >Tech Blog</Text>
                     <RiArrowDropRightLine size="2em" />
                 </HStack>
             </Box>
