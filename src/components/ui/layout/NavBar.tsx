@@ -30,7 +30,7 @@ const NavBar = () => {
                     <ColorModeButton />
                     <Avatar.Root onClick={() => window.open('https://github.com/chihiroyasu')}>
                         <Avatar.Fallback name="QQQLQ" />
-                        <AvatarImage src="../../../../../public/qqqlq_icon.jpg"/>
+                        <AvatarImage src="/public/qqqlq_icon.jpg"/>
                     </Avatar.Root>
                 </Stack>
             </Flex>
