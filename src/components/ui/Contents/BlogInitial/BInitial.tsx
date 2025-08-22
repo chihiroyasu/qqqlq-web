@@ -1,22 +1,28 @@
-import { Stack, Text } from "@chakra-ui/react"
+import { Separator, Stack, Text, Link } from "@chakra-ui/react"
 import BlogHead from "../BlogHead";
+import { LuExternalLink } from "react-icons/lu"
 
 const BlogInitial = () => {
   return (
     <>
-      <BlogHead title="I'm qqqlq." params="initial" tags={["learning",]} />
+      <BlogHead title="Hello World." params="initial" tags={["learning",]} />
       <Stack>
-        <Text textStyle="xs">Chakra</Text>
-        <Text textStyle="sm">Chakra</Text>
-        <Text textStyle="md">Chakra</Text>
-        <Text textStyle="lg">Chakra</Text>
-        <Text textStyle="xl">Chakra</Text>
-        <Text textStyle="2xl">Chakra</Text>
-        <Text textStyle="3xl">Chakra</Text>
-        <Text textStyle="4xl">Chakra</Text>
-        <Text textStyle="5xl">Chakra</Text>
-        <Text textStyle="6xl">Chakra</Text>
-        <Text textStyle="7xl">Chakra</Text>
+        <Text textStyle={"xl"} fontWeight={"bold"}>Hello World.</Text>
+        <Text>I'm qqqlq.</Text>
+        <Text>This blog was created using React.</Text>
+        <Text>Details and configuration are on GitHub.</Text>
+        <Text>Details and configuration are on{" "}
+          <Link
+            variant={"underline"}
+            href="https://github.com/chihiroyasu/qqqlq-web"
+            colorPalette={"teal"}
+          >
+            GitHub <LuExternalLink />
+          </Link>{" "}
+        </Text>
+        <Separator orientation={"vertical"} />
+        <Text fontWeight={"bold"}>To Do</Text>
+        <Text>・make this available with .md</Text>
       </Stack>
     </>
   )

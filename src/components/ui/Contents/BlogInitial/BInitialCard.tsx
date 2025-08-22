@@ -30,7 +30,7 @@ const BInitialCard = () => {
             </HStack>
           </Card.Header>
           <Card.Body color="fg.muted">
-            This is a an initial blog post. This blog will be used to sharing daily learning and knowledge.
+            This is a an initial blog post. This blog will be used to share daily learning and knowledge.
           </Card.Body>
         </Card.Root>
     </>
