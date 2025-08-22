@@ -2,40 +2,36 @@ import {
     Box,
     Flex,
     Stack,
+    Avatar,
+    AvatarImage,
 } from "@chakra-ui/react"
 import {
     ColorModeButton,
     useColorModeValue,
 } from "@/components/ui/color-mode"
-import { FaXTwitter, FaGithub } from "react-icons/fa6";
+import classes from "./NavBar.module.scss";
+import { useNavigate } from "react-router-dom";
 
 // ナビゲーションバー本体
 const NavBar = () => {
+  
+  const navigate = useNavigate();
+
+  const goToTop = () => {
+    navigate("/")
+  };
+
   return (
     <>
         <Box bg={useColorModeValue('gray.200', 'gray.900')} px={4}>
             <Flex h={16} alignItems="center" justifyContent="space-between">
-                <Box>qqqlq</Box>
+                <Box className={classes.NavBarTitle} onClick={goToTop} cursor="pointer" >Node Walker</Box>
                 <Stack direction="row" alignItems="center">
                     <ColorModeButton />
-                    <Box
-                        as="button"
-                        onClick={() => window.open('https://github.com/chihiroyasu', '_blank')}
-                        cursor="pointer"
-                        fontSize="xl"
-                        _hover={{ color: 'gray.500' }}
-                    >
-                        <FaGithub />
-                    </Box>
-                    <Box
-                        as="button"
-                        onClick={() => window.open('https://twitter.com/qqqlq', '_blank')}
-                        cursor="pointer"
-                        fontSize="xl"
-                        _hover={{ color: 'gray.500' }}
-                    >
-                        <FaXTwitter />
-                    </Box>
+                    <Avatar.Root onClick={() => window.open('https://github.com/chihiroyasu')}>
+                        <Avatar.Fallback name="QQQLQ" />
+                        <AvatarImage src="../../../../../public/qqqlq_icon.jpg"/>
+                    </Avatar.Root>
                 </Stack>
             </Flex>
         </Box>
