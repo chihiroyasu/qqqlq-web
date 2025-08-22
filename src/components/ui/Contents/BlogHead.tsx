@@ -26,6 +26,7 @@ const BlogHead = (props: BlogProps) => {
     learning: "purple",
     Chakra: "teal",
     React: "orange",
+    Markdown: "red",
   };
 
   return (

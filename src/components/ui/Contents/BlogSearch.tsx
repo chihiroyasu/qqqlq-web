@@ -12,6 +12,7 @@ import {
 import { HiPlus } from "react-icons/hi"
 import BlogTest from "./BlogTest/BTestCard";
 import BlogInitial from "./BlogInitial/BInitialCard";
+import BMDCard from "./BlogMD/BMDCard";
 import { RiArrowDropRightLine } from "react-icons/ri"
 
 const BlogSearch = () => {
@@ -45,6 +46,7 @@ const BlogSearch = () => {
     const BTags = [
         {id: 0, component: BlogTest, tags: ["Chakra", "React", "learning"]},
         {id: 1, component: BlogInitial, tags: ["learning",]},
+        {id: 2, component: BMDCard, tags: ["React", "learning", "Markdown"]},
     ];
 
     // タグの色を定義
@@ -52,6 +54,7 @@ const BlogSearch = () => {
         learning: "purple",
         Chakra: "teal",
         React: "orange",
+        Markdown: "red",
     };
 
     // 全てのタグをマージした配列

@@ -3,6 +3,7 @@ import BlogTest from './BlogTest/BTest';
 import BlogSearch from './BlogSearch';
 import BlogInitial from './BlogInitial/BInitial';
 import Blogs from './Blogs';
+import MD from './BlogMD/BMD';
 
 
 function BlogRoutes() {
@@ -13,6 +14,8 @@ function BlogRoutes() {
 
       {/* /blog/list へのアクセス時 */}
       <Route path="tag" element={<BlogSearch />} />
+
+      <Route path="md" element={<MD />} />
       
       {/* /blog/test へのアクセス時 */}
       <Route path="test" element={<BlogTest />} />
