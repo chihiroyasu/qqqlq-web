@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm';
 import markDownContent from './MDDemo.md?raw'
 import BlogHead from "../BlogHead";
 import 'github-markdown-css/github-markdown-light.css';
+import 'github-markdown-css/github-markdown-dark.css';
 
 const MD = () => {
   return (
