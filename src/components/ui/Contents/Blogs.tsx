@@ -11,10 +11,10 @@ const Blogs = () => {
       <Trans />
 
       <Stack>
+        <BExpoRoutingCard />
         <BMDCard />
         <BInitialCard />
         <BTestCard />
-        <BExpoRoutingCard />
       </Stack>
     </>
   )
