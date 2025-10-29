@@ -1,6 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import markDownContent from './MDDemo.md?raw';
+import markDownContent from './BExpoRouting.md?raw';
 import BlogHead from "../BlogHead";
 import { useEffect, useState } from 'react';
 
@@ -58,7 +58,7 @@ const MD = () => {
 
   return (
     <>
-      <BlogHead title="available with .md" params="md" tags={["learning", "React", "Markdown"]} />
+      <BlogHead title="available with .md" params="md" tags={["Expo", "expo-router", "ルーティング", "React Native"]} />
       <div className="markdown-body">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {markDownContent}

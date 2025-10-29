@@ -4,6 +4,7 @@ import BlogSearch from './BlogSearch';
 import BlogInitial from './BlogInitial/BInitial';
 import Blogs from './Blogs';
 import MD from './BlogMD/BMD';
+import BExpoRouting from './BlogExpoRouting/BExpoRouting';
 
 
 function BlogRoutes() {
@@ -22,6 +23,9 @@ function BlogRoutes() {
       
       {/* /blog/initial へのアクセス時 */}
       <Route path="initial" element={<BlogInitial />} />
+
+      {/* /blog/expo-routing-basic へのアクセス時 */}
+      <Route path="expo-routing-basic" element={<BExpoRouting />} />
       
       {/* その他のブログルート用の404 */}
       <Route path="*" element={<div>Blog Not Found</div>} />

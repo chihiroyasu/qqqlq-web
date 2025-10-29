@@ -27,6 +27,10 @@ const BlogHead = (props: BlogProps) => {
     Chakra: "teal",
     React: "orange",
     Markdown: "red",
+    Expo: "purple",
+    "expo-router": "orange",
+    ルーティング: "red",
+    "React Native": "green",
   };
 
   return (
