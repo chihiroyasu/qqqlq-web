@@ -58,7 +58,7 @@ const MD = () => {
 
   return (
     <>
-      <BlogHead title="available with .md" params="md" tags={["Expo", "expo-router", "ルーティング", "React Native"]} />
+      <BlogHead title="expo-routerのきほん" params="md" tags={["Expo", "expo-router", "ルーティング", "React Native"]} />
       <div className="markdown-body">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {markDownContent}
