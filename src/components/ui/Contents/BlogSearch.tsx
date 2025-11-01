@@ -14,6 +14,7 @@ import BlogTest from "./BlogTest/BTestCard";
 import BlogInitial from "./BlogInitial/BInitialCard";
 import BMDCard from "./BlogMD/BMDCard";
 import BExpoRoutingCard from "./BlogExpoRouting/BExpoRoutingCard";
+import BExpoRoutingTipsCard from "./BlogExpoRoutingTips/BExpoRoutingTipsCard";
 import { RiArrowDropRightLine } from "react-icons/ri"
 
 const BlogSearch = () => {
@@ -49,6 +50,7 @@ const BlogSearch = () => {
         {id: 1, component: BlogInitial, tags: ["learning",]},
         {id: 2, component: BMDCard, tags: ["React", "learning", "Markdown"]},
         {id: 3, component: BExpoRoutingCard, tags: ["Expo", "expo-router", "ルーティング", "React Native"]},
+        {id: 4, component: BExpoRoutingTipsCard, tags: ["Expo", "expo-router", "ルーティング", "React Native"]},
     ];
 
     // タグの色を定義

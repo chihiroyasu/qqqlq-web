@@ -1,10 +1,10 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import markDownContent from './BExpoRouting.md?raw';
+import markDownContent from './BExpoRoutingTips.md?raw';
 import BlogHead from "../BlogHead";
 import { useEffect, useState } from 'react';
 
-const BExpoRouting = () => {
+const BExpoRoutingTips = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const BExpoRouting = () => {
 
   return (
     <>
-      <BlogHead title="expo-routerのきほん" params="md" tags={["Expo", "expo-router", "ルーティング", "React Native"]} />
+      <BlogHead title="expo-router tips" params="md" tags={["Expo", "expo-router", "ルーティング", "React Native"]} />
       <div className="markdown-body">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {markDownContent}
@@ -68,4 +68,4 @@ const BExpoRouting = () => {
   );
 }
 
-export default BExpoRouting;
+export default BExpoRoutingTips;

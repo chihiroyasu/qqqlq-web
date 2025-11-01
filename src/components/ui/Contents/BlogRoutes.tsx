@@ -5,6 +5,7 @@ import BlogInitial from './BlogInitial/BInitial';
 import Blogs from './Blogs';
 import MD from './BlogMD/BMD';
 import BExpoRouting from './BlogExpoRouting/BExpoRouting';
+import BExpoRoutingTips from './BlogExpoRoutingTips/BExpoRoutingTips';
 
 
 function BlogRoutes() {
@@ -26,6 +27,9 @@ function BlogRoutes() {
 
       {/* /blog/expo-routing-basic へのアクセス時 */}
       <Route path="expo-routing-basic" element={<BExpoRouting />} />
+
+      {/* /blog/expo-routing-tips へのアクセス時 */}
+      <Route path="expo-routing-tips" element={<BExpoRoutingTips />} />
       
       {/* その他のブログルート用の404 */}
       <Route path="*" element={<div>Blog Not Found</div>} />
